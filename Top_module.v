@@ -1,15 +1,15 @@
 module top
-			#(parameter N = 2)// Here N can be changed as the number of bits required.
-			(input [N-1:0]A,B,
-			 input c_in,
-			 input [3:0]control,
-			 output reg [N-1:0]result,
-			 output reg c_out,
-			 output zero,
-			 output parity,
-			 output reg invalid,
-			 output reg borrow);
-			 
+	#(parameter N = 8)// Here N can be changed as the number of bits required.
+	(input [N-1:0]A,B,
+	 input c_in,
+	 input [3:0]control,
+	 output reg [N-1:0]result,
+	 output reg c_out,
+	 output zero,
+	 output parity,
+	 output reg invalid,
+	 output reg borrow);
+			 		 
 
 localparam ADD = 4'd0;// discard carry
 localparam ADD_C = 4'd1;// ADD with carry
