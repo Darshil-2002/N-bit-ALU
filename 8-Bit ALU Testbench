@@ -1,0 +1,55 @@
+module ALU_tb;
+
+	// Inputs
+	reg [7:0] A;
+	reg [7:0] B;
+	reg c_in;
+	reg [3:0] control;
+
+	// Outputs
+	wire [7:0] result;
+	wire c_out;
+	wire zero;
+	wire parity;
+	wire invalid;
+	wire borrow;
+
+	// Instantiate the Unit Under Test (UUT)
+	top uut (
+		.A(A), 
+		.B(B), 
+		.c_in(c_in), 
+		.control(control), 
+		.result(result), 
+		.c_out(c_out), 
+		.zero(zero), 
+		.parity(parity), 
+		.invalid(invalid), 
+		.borrow(borrow)
+	);
+	
+	integer i = 0;
+	initial begin
+		// Initialize Inputs
+		A = 0;
+		B = 0;
+		c_in = 0;
+		control = 0;
+
+		// Wait 10 ns for global reset to finish
+		#10;
+        
+		// Add stimulus here
+		A = $random;  // Assign required values
+		B = $random;  //in place of $random.
+		c_in = 1; 
+		#5;
+		for(i=0;i< 16;i=i+1)
+		begin
+		#10 control = control + 1'b1; // control moves from 0000 to 1111
+		end
+		
+		#10 $finish;
+	end
+      
+endmodule
