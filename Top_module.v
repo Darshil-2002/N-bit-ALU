@@ -34,7 +34,7 @@ localparam XOR_P = 4'd15; // To get Parity Bit
 			invalid = 0; borrow = 0;
 			case (control)
 				ADD : result = A + B;
-				ADD_C : {c_out,result} = A + B;
+				ADD_C : {c_out,result} = A + B + c_in;
 				SUB : result = A - B;
 				SUB_B : {borrow,result} = A - B;
 				AND : result = A & B ;
